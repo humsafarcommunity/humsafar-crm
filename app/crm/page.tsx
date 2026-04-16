@@ -18,14 +18,23 @@ import { Batches } from "@/components/crm/Batches";
 import { Payments } from "@/components/crm/Payments";
 
 import * as actions from "@/app/actions/leads";
+import { logout } from "@/app/login/actions";
+import { createClient } from "@/utils/supabase/client";
+import { User } from "@supabase/supabase-js";
 
 export default function HumsafarCRM() {
   const [mounted, setMounted] = useState(false);
   const [leads, setLeads] = useState<Lead[]>([]);
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(null);
 
   React.useEffect(() => {
     setMounted(true);
+    const supabase = createClient();
+    supabase.auth.getUser().then(({ data: { user } }) => {
+      setUser(user);
+    });
+
     actions.getLeads().then((data) => {
       setLeads(data);
       setLoading(false);
@@ -216,7 +225,7 @@ export default function HumsafarCRM() {
           ))}
         </nav>
 
-        <div className="p-4 border-t border-slate-800">
+        <div className="p-4 border-t border-slate-800 space-y-4">
           <div className="p-4 bg-slate-800/50 rounded-2xl">
             <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest">
               Live Presence
@@ -225,6 +234,20 @@ export default function HumsafarCRM() {
             <div className="text-emerald-400 text-[11px] font-black mt-1">
               {leads.filter((l) => l.status === "Confirmed").length} active bookings ✓
             </div>
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <div className="px-4 py-2 flex flex-col">
+               <span className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-none">Account</span>
+               <span className="text-slate-300 text-xs font-bold mt-1 truncate">{user?.email || "Loading..."}</span>
+            </div>
+            <button 
+              onClick={() => logout()}
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 transition-all border border-transparent hover:border-rose-500/20"
+            >
+              <span className="text-lg">🚪</span>
+              Log Out
+            </button>
           </div>
         </div>
       </aside>
