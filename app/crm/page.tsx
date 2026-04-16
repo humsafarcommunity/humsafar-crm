@@ -210,11 +210,10 @@ export default function HumsafarCRM() {
 
   if (loading) {
     return (
-      <div className="h-screen w-screen bg-slate-50 flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-indigo-200 border-t-indigo-600 rounded-full animate-spin"></div>
-          <div className="text-slate-500 font-bold text-sm tracking-widest uppercase">Initializing CRM...</div>
-        </div>
+      <div className="h-screen w-full flex flex-col items-center justify-center bg-slate-50 animate-pulse">
+        <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-3xl shadow-xl mb-4">🏔️</div>
+        <div className="text-slate-900 font-black text-xl tracking-tight">Humsafar CRM</div>
+        <div className="text-slate-400 font-bold text-[10px] uppercase tracking-widest mt-2 italic">Loading your community...</div>
       </div>
     );
   }
@@ -318,8 +317,8 @@ export default function HumsafarCRM() {
       </aside>
 
       {/* MAIN CONTENT */}
-      <main className="flex-1 overflow-auto p-8 lg:p-10">
-        <div className="max-w-7xl mx-auto">
+      <main className="flex-1 overflow-auto p-6 md:p-8 lg:p-12 bg-slate-50/50">
+        <div className="max-w-7xl mx-auto space-y-10">
           {tab === "dashboard" && (
             <Dashboard
               leads={leads}

@@ -13,16 +13,16 @@ export const Button: React.FC<ButtonProps> = ({
   className = "",
   ...props
 }) => {
-  const baseStyles = "inline-flex items-center justify-center gap-2 rounded-lg font-bold transition-all hover:opacity-90 active:scale-95 disabled:opacity-50 disabled:pointer-events-none";
+  const baseStyles = "inline-flex items-center justify-center gap-2 rounded-lg font-black transition-all hover:opacity-90 active:scale-95 disabled:opacity-50 disabled:pointer-events-none";
   
   const variants = {
-    primary: "bg-linear-to-br from-indigo-500 to-indigo-600 text-white border-none",
-    success: "bg-linear-to-br from-emerald-500 to-emerald-600 text-white border-none",
-    danger: "bg-linear-to-br from-red-500 to-red-600 text-white border-none",
-    ghost: "bg-transparent text-slate-500 border border-slate-200 hover:bg-slate-50",
-    whatsapp: "bg-linear-to-br from-green-400 to-green-600 text-white border-none",
-    email: "bg-linear-to-br from-amber-500 to-amber-600 text-white border-none",
-    call: "bg-linear-to-br from-blue-500 to-blue-600 text-white border-none",
+    primary: "bg-linear-to-br from-indigo-400 to-indigo-600 text-white shadow-md shadow-indigo-100",
+    success: "bg-linear-to-br from-emerald-400 to-emerald-600 text-white shadow-md shadow-emerald-100",
+    danger: "bg-linear-to-br from-red-400 to-red-600 text-white shadow-md shadow-red-100",
+    ghost: "bg-white text-slate-600 border-2 border-slate-100 hover:bg-slate-50 hover:border-slate-200 shadow-sm",
+    whatsapp: "bg-linear-to-br from-emerald-300 to-emerald-500 text-white shadow-md shadow-emerald-100",
+    email: "bg-linear-to-br from-amber-300 to-amber-500 text-white shadow-md shadow-amber-100",
+    call: "bg-linear-to-br from-sky-400 to-sky-600 text-white shadow-md shadow-sky-100",
   };
 
   const sizes = {

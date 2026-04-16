@@ -16,17 +16,23 @@ interface StatCardProps {
 
 const StatCard: React.FC<StatCardProps> = ({ label, value, sub, color, icon }) => (
   <div
-    className="bg-white rounded-2xl p-5 shadow-xs border-l-4 flex justify-between items-center"
-    style={{ borderLeftColor: color }}
+    className="bg-white rounded-2xl p-6 shadow-premium border border-slate-50 transition-all hover:translate-y-[-2px] hover:shadow-lg flex flex-col justify-between"
   >
-    <div>
-      <div className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">
+    <div className="flex justify-between items-start mb-4">
+      <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl bg-slate-50 shrink-0" style={{ color }}>
+         {icon}
+      </div>
+      <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">
         {label}
       </div>
-      <div className="text-2xl font-black text-slate-900 leading-none">{value}</div>
-      {sub && <div className="text-xs text-slate-500 mt-1">{sub}</div>}
     </div>
-    <div className="text-3xl opacity-85">{icon}</div>
+    <div>
+      <div className="text-3xl font-black text-slate-900 tracking-tight">{value}</div>
+      {sub && <div className="text-[11px] font-bold text-slate-500 mt-2 flex items-center gap-1.5 uppercase tracking-wide">
+        <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }}></span>
+        {sub}
+      </div>}
+    </div>
   </div>
 );
 
