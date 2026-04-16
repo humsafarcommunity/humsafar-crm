@@ -1,4 +1,4 @@
-import { login, signup } from './actions'
+import { login } from './actions'
 
 interface Props {
   searchParams: Promise<{ message: string }>
