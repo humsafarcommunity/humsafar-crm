@@ -152,7 +152,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
         <div className="space-y-6">
           <div className="bg-slate-900 rounded-xl p-8 text-white shadow-2xl relative overflow-hidden">
              <div className="relative z-10">
-               <h3 className="text-xl font-black mb-2">Grow your business 🏔️</h3>
+               <h3 className="text-xl font-black mb-2">Grow your business</h3>
                <p className="text-slate-400 text-xs font-medium leading-relaxed mb-6">
                  Track your pipeline and follow up with leads consistently to increase your conversion rate.
                </p>

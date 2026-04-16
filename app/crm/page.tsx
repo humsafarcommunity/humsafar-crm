@@ -215,8 +215,7 @@ export default function HumsafarCRM() {
   if (loading) {
     return (
       <div className="h-screen w-full flex flex-col items-center justify-center bg-slate-50 animate-pulse">
-        <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-3xl shadow-xl mb-4">🏔️</div>
-        <div className="text-slate-900 font-black text-xl tracking-tight">Humsafar CRM</div>
+        <div className="text-slate-900 font-black text-2xl tracking-tighter">HUMSAFAR</div>
         <div className="text-slate-400 font-bold text-[10px] uppercase tracking-widest mt-2 italic">Loading your community...</div>
       </div>
     );
@@ -226,9 +225,6 @@ export default function HumsafarCRM() {
       {/* MOBILE HEADER */}
       <header className="lg:hidden bg-slate-900 px-5 py-4 flex items-center justify-between sticky top-0 z-50">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 bg-linear-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center text-base">
-            🏔️
-          </div>
           <span className="text-white font-black text-sm uppercase tracking-tight">Humsafar</span>
         </div>
         <button 
@@ -254,15 +250,10 @@ export default function HumsafarCRM() {
         ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
       `}>
         <div className="p-8 flex items-center justify-between border-b border-slate-900 lg:border-0 lg:block">
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-xl shadow-xl">
-              🏔️
-            </div>
-            <div>
-              <div className="text-white font-black text-base leading-none tracking-tight">Humsafar</div>
-              <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mt-1.5">
-                Executive Portal
-              </div>
+          <div className="flex flex-col">
+            <div className="text-white font-black text-2xl leading-none tracking-tighter">HUMSAFAR</div>
+            <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mt-2">
+              Executive Portal
             </div>
           </div>
           <button 

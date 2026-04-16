@@ -12,10 +12,7 @@ export default async function LoginPage({ searchParams }: Props) {
     <div className="flex flex-col flex-1 items-center justify-center min-h-screen bg-slate-100 font-sans p-6">
       <div className="w-full max-w-md bg-white rounded-xl shadow-2xl p-10 border border-slate-200">
         <div className="flex flex-col items-center mb-10">
-          <div className="w-16 h-16 bg-slate-900 rounded-xl flex items-center justify-center text-3xl shadow-lg mb-4">
-            🏔️
-          </div>
-          <h1 className="text-3xl font-black text-slate-900 tracking-tight">Humsafar CRM</h1>
+          <h1 className="text-3xl font-black text-slate-900 tracking-tighter">HUMSAFAR</h1>
           <p className="text-slate-400 font-bold text-[10px] uppercase tracking-widest mt-2 px-3 py-1 bg-slate-50 rounded-full border border-slate-100">
             Internal Access Only
           </p>
