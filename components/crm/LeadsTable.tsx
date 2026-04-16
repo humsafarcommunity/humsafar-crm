@@ -22,6 +22,7 @@ interface LeadsTableProps {
   onEmail: (lead: Lead) => void;
   onCall: (lead: Lead) => void;
   onViewDetail: (lead: Lead) => void;
+  onEditLead: (lead: Lead) => void;
 }
 
 export const LeadsTable: React.FC<LeadsTableProps> = ({
@@ -39,6 +40,7 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
   onEmail,
   onCall,
   onViewDetail,
+  onEditLead,
 }) => {
   const batches = ["All", ...Array.from(new Set(leads.map((l) => l.batch)))];
   const statuses = ["All", ...Object.keys(STATUS_CONFIG)];
@@ -207,6 +209,13 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
                         className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center hover:bg-indigo-100 transition-colors"
                       >
                         👁
+                      </button>
+                      <button
+                        title="Edit Lead"
+                        onClick={() => onEditLead(l)}
+                        className="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center hover:bg-slate-200 transition-colors"
+                      >
+                        ✏️
                       </button>
                     </div>
                   </td>

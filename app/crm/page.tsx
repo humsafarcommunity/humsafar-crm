@@ -47,7 +47,7 @@ export default function HumsafarCRM() {
   const [filterStatus, setFilterStatus] = useState("All");
   const [filterBatch, setFilterBatch] = useState("All");
   const [selected, setSelected] = useState<Lead | null>(null);
-  const [modal, setModal] = useState<"add" | "bulk" | "detail" | null>(null);
+  const [modal, setModal] = useState<"add" | "edit" | "bulk" | "detail" | null>(null);
   const [toast, setToast] = useState<{ msg: string; type: "success" | "error" | "info" } | null>(null);
   const [bulkPreview, setBulkPreview] = useState<Lead[]>([]);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -72,10 +72,19 @@ export default function HumsafarCRM() {
     setTimeout(() => setToast(null), 3200);
   };
 
-  const addLead = async () => {
-    const fresh = await actions.addLead(form);
-    setLeads((p) => [fresh, ...p]);
+  const handleSaveLead = async () => {
+    if (modal === "edit" && selected) {
+      const updated = await actions.updateLead(selected.id, form);
+      setLeads((p) => p.map((l) => (l.id === selected.id ? updated : l)));
+      showToast(`${updated.name} updated successfully`);
+    } else {
+      const fresh = await actions.addLead(form);
+      setLeads((p) => [fresh, ...p]);
+      showToast(`${fresh.name} added to CRM`);
+    }
+    
     setModal(null);
+    setSelected(null);
     setForm({
       name: "",
       age: "",
@@ -90,7 +99,25 @@ export default function HumsafarCRM() {
       tag: "New",
       followUp: "",
     });
-    showToast(`${fresh.name} added to CRM`);
+  };
+
+  const openEditModal = (lead: Lead) => {
+    setSelected(lead);
+    setForm({
+      name: lead.name,
+      age: lead.age,
+      phone: lead.phone,
+      email: lead.email || "",
+      sharing: lead.sharing,
+      batch: lead.batch || "",
+      status: lead.status,
+      advance: lead.advance,
+      total: lead.total,
+      notes: lead.notes || "",
+      tag: lead.tag,
+      followUp: lead.followUp || "",
+    });
+    setModal("edit");
   };
 
   const updateLead = async (id: number, updates: Partial<Lead>) => {
@@ -321,6 +348,7 @@ export default function HumsafarCRM() {
                 setSelected(l);
                 setModal("detail");
               }}
+              onEditLead={openEditModal}
             />
           )}
           {tab === "followups" && (
@@ -342,7 +370,11 @@ export default function HumsafarCRM() {
       </main>
 
       {/* MODALS */}
-      <Modal open={modal === "add"} onClose={() => setModal(null)} title="➕ Add New Lead">
+      <Modal
+        open={modal === "add" || modal === "edit"}
+        onClose={() => setModal(null)}
+        title={modal === "add" ? "➕ Add New Lead" : "✏️ Edit Lead"}
+      >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Input
             label="Full Name *"
@@ -437,10 +469,10 @@ export default function HumsafarCRM() {
           </Button>
           <Button
             variant="primary"
-            onClick={addLead}
+            onClick={handleSaveLead}
             disabled={!form.name || !form.phone}
           >
-            ＋ Add Lead
+            {modal === "add" ? "＋ Add Lead" : "💾 Save Changes"}
           </Button>
         </div>
       </Modal>
