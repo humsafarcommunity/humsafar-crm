@@ -60,12 +60,6 @@ export default async function LoginPage({ searchParams }: Props) {
             >
               Sign In
             </button>
-            <button
-              formAction={signup}
-              className="w-full py-4 bg-white text-slate-500 border-2 border-slate-100 rounded-2xl font-black text-sm hover:bg-slate-50 transition-all active:scale-[0.98]"
-            >
-              Request Access (Sign Up)
-            </button>
           </div>
         </form>
       </div>

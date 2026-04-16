@@ -24,25 +24,6 @@ export async function login(formData: FormData) {
   redirect('/crm')
 }
 
-export async function signup(formData: FormData) {
-  const cookieStore = await cookies()
-  const supabase = createClient(cookieStore)
-
-  const data = {
-    email: formData.get('email') as string,
-    password: formData.get('password') as string,
-  }
-
-  const { error } = await supabase.auth.signUp(data)
-
-  if (error) {
-    redirect('/login?message=Could not create user')
-  }
-
-  revalidatePath('/', 'layout')
-  redirect('/login?message=Check your email for confirmation')
-}
-
 export async function logout() {
   const cookieStore = await cookies()
   const supabase = createClient(cookieStore)
