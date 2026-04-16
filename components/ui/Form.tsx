@@ -12,7 +12,7 @@ export const Input: React.FC<InputProps> = ({ label, className = "", ...props })
       </label>
     )}
     <input
-      className={`px-4 py-3 rounded-xl border-2 border-slate-100 text-slate-900 font-semibold text-[14px] bg-slate-50/50 outline-hidden focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-500/10 transition-all placeholder:text-slate-300 ${className}`}
+      className={`px-4 py-3 rounded-md border border-slate-300 text-slate-900 font-semibold text-[14px] bg-slate-50/50 outline-hidden focus:border-slate-500 focus:bg-white focus:ring-4 focus:ring-slate-900/5 transition-all placeholder:text-slate-300 ${className}`}
       {...props}
     />
   </div>
@@ -31,7 +31,7 @@ export const Select: React.FC<SelectProps> = ({ label, children, className = "",
       </label>
     )}
     <select
-      className={`px-4 py-3 rounded-xl border-2 border-slate-100 text-slate-900 font-semibold text-[14px] bg-slate-50/50 outline-hidden focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-500/10 cursor-pointer transition-all ${className}`}
+      className={`px-4 py-3 rounded-lg border border-slate-200 text-slate-900 font-semibold text-[14px] bg-slate-50/50 outline-hidden focus:border-slate-400 focus:bg-white focus:ring-4 focus:ring-slate-900/5 cursor-pointer transition-all ${className}`}
       {...props}
     >
       {children}

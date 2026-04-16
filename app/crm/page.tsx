@@ -245,19 +245,19 @@ export default function HumsafarCRM() {
 
       {/* SIDEBAR */}
       <aside className={`
-        fixed inset-y-0 left-0 bg-slate-900 flex flex-col shrink-0 h-full z-50 w-72 transition-transform duration-300 transform
-        lg:relative lg:translate-x-0 lg:z-0 lg:w-64
+        fixed inset-y-0 left-0 bg-slate-950 flex flex-col shrink-0 h-full z-50 w-72 transition-transform duration-300 transform
+        lg:relative lg:translate-x-0 lg:z-0 lg:w-64 border-r border-slate-800
         ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
       `}>
-        <div className="p-6 flex items-center justify-between border-b border-slate-800 lg:border-0 lg:block">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-linear-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center text-xl">
+        <div className="p-8 flex items-center justify-between border-b border-slate-900 lg:border-0 lg:block">
+          <div className="flex items-center gap-4">
+            <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-xl shadow-xl">
               🏔️
             </div>
             <div>
-              <div className="text-white font-black text-base leading-none">Humsafar</div>
-              <div className="text-slate-500 text-[11px] font-bold uppercase tracking-wider mt-1">
-                Community CRM
+              <div className="text-white font-black text-base leading-none tracking-tight">Humsafar</div>
+              <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mt-1.5">
+                Executive Portal
               </div>
             </div>
           </div>
@@ -269,7 +269,7 @@ export default function HumsafarCRM() {
           </button>
         </div>
 
-        <nav className="px-3 mt-4 flex-1">
+        <nav className="px-5 mt-6 flex-1 space-y-1">
           {navItems.map((item) => (
             <button
               key={item.id}
@@ -277,40 +277,37 @@ export default function HumsafarCRM() {
                 setTab(item.id);
                 setIsSidebarOpen(false);
               }}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm mb-1 transition-all ${
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg font-bold text-sm transition-all ${
                 tab === item.id
-                  ? "bg-linear-to-br from-indigo-500 to-indigo-600 text-white shadow-lg"
-                  : "text-slate-400 hover:text-white hover:bg-slate-800"
+                  ? "bg-white text-slate-950 shadow-xl shadow-black/20"
+                  : "text-slate-400 hover:text-white hover:bg-white/5"
               }`}
             >
-              <span className="text-lg">{item.icon}</span>
+              <span className="text-lg opacity-80">{item.icon}</span>
               {item.label}
             </button>
           ))}
         </nav>
 
-        <div className="p-4 border-t border-slate-800 space-y-4">
-          <div className="p-4 bg-slate-800/50 rounded-2xl">
-            <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest">
-              Live Presence
-            </div>
-            <div className="text-white text-2xl font-black mt-1">{leads.length}</div>
-            <div className="text-emerald-400 text-[11px] font-black mt-1">
-              {leads.filter((l) => l.status === "Confirmed").length} active bookings ✓
+        <div className="p-5 border-t border-slate-900 bg-black/20">
+          <div className="bg-slate-900/50 rounded-xl p-4 mb-4 border border-slate-800">
+            <div className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-1 leading-none">Status</div>
+            <div className="text-emerald-400 text-xs font-bold flex items-center gap-1.5">
+               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+               Live CRM Pipeline
             </div>
           </div>
 
           <div className="flex flex-col gap-2">
             <div className="px-4 py-2 flex flex-col">
-               <span className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-none">Account</span>
-               <span className="text-slate-300 text-xs font-bold mt-1 truncate">{user?.email || "Loading..."}</span>
+               <span className="text-slate-500 text-[10px] font-black uppercase tracking-widest leading-none">Operator</span>
+               <span className="text-slate-200 text-xs font-bold mt-1.5 truncate">{user?.email || "Loading..."}</span>
             </div>
             <button 
               onClick={() => logout()}
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm text-rose-400 hover:text-rose-300 hover:bg-rose-500/10 transition-all border border-transparent hover:border-rose-500/20"
+              className="w-full flex items-center gap-3 px-4 py-3 rounded-lg font-bold text-xs uppercase tracking-widest text-rose-500 hover:text-rose-400 hover:bg-rose-500/10 transition-all"
             >
-              <span className="text-lg">🚪</span>
-              Log Out
+              Sign Out Securely
             </button>
           </div>
         </div>

@@ -60,120 +60,119 @@ export const Dashboard: React.FC<DashboardProps> = ({
   const balance = totalRevenue - collected;
 
   return (
-    <div className="flex flex-col gap-6 animate-in fade-in duration-500">
-      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+    <div className="flex flex-col gap-10 animate-in fade-in duration-500 pb-10">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-6 border-b border-slate-200 pb-8">
         <div>
-          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Good day, Humsafar 🏔️</h2>
-          <p className="text-slate-500 text-sm mt-1 font-medium italic">Here's your travel business at a glance</p>
+          <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">Executive Dashboard</h2>
+          <p className="text-slate-500 text-sm mt-2 font-medium">Humsafar community travel pipeline at a glance</p>
         </div>
-        <div className="flex flex-wrap gap-2.5">
-          <Button onClick={onAddLead} variant="primary" className="flex-1 md:flex-none">
-            ＋ Add Lead
+        <div className="flex flex-wrap gap-3">
+          <Button onClick={onAddLead} variant="primary" className="shadow-lg shadow-indigo-100 px-6">
+            ＋ Create New Lead
           </Button>
-          <Button onClick={onBulkImport} variant="ghost" className="flex-1 md:flex-none">
-            📤 Import
+          <Button onClick={onBulkImport} variant="ghost" className="px-6 border-slate-300">
+            📤 Import CSV
           </Button>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3 md:gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4 md:gap-5">
         <StatCard
           label="Total Leads"
-          value={total}
-          sub={`${confirmed} confirmed`}
-          color="#6366f1"
+          value={total.toString()}
+          sub={`${confirmed} in pipeline`}
+          color="#0f172a"
           icon="👥"
         />
         <StatCard
-          label="Confirmed"
-          value={confirmed}
-          sub={`${Math.round((confirmed / total) * 100) || 0}% conversion`}
-          color="#10b981"
-          icon="✅"
+          label="Conversion"
+          value={`${Math.round((confirmed / total) * 100) || 0}%`}
+          sub={`${confirmed} records`}
+          color="#059669"
+          icon="📈"
         />
         <StatCard
-          label="Pending"
-          value={pending}
-          sub="Need follow-up"
-          color="#f59e0b"
-          icon="⏳"
+          label="Needs Attention"
+          value={pending.toString()}
+          sub="Pending review"
+          color="#dc2626"
+          icon="⚠️"
         />
         <StatCard
-          label="Follow-ups"
-          value={followUp}
-          sub="Due today"
-          color="#6366f1"
+          label="Today's Follow-ups"
+          value={followUp.toString()}
+          sub="Schedule calls"
+          color="#4f46e5"
           icon="📞"
         />
         <StatCard
-          label="Total Revenue"
+          label="Potential Revenue"
           value={`₹${(totalRevenue / 1000).toFixed(0)}K`}
-          sub="Gross bookings"
-          color="#059669"
+          sub="Projected"
+          color="#1e293b"
           icon="💼"
         />
         <StatCard
-          label="Collected"
+          label="Revenue Collected"
           value={`₹${(collected / 1000).toFixed(0)}K`}
           sub={`₹${(balance / 1000).toFixed(0)}K pending`}
-          color="#3b82f6"
+          color="#0891b2"
           icon="💰"
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <div className="bg-white rounded-2xl p-6 shadow-xs">
-          <div className="font-extrabold text-base text-slate-900 mb-4">Recent Leads</div>
-          <div className="space-y-4">
-            {leads.slice(0, 5).map((l) => (
-              <div
-                key={l.id}
-                className="flex items-center justify-between pb-3 border-b border-slate-50 last:border-0 last:pb-0"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-full bg-linear-to-br from-indigo-500 to-indigo-600 flex items-center justify-center text-white font-black text-sm">
-                    {l.name[0]}
-                  </div>
-                  <div>
-                    <div className="font-bold text-[13px] text-slate-900">{l.name}</div>
-                    <div className="text-[11px] text-slate-400">
-                      {l.batch} • {l.sharing}
-                    </div>
-                  </div>
-                </div>
-                <Badge label={l.status} config={STATUS_CONFIG[l.status]} />
-              </div>
-            ))}
-          </div>
+      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+        <div className="xl:col-span-2 space-y-6">
+           <div className="bg-white rounded-xl shadow-premium border border-slate-100 overflow-hidden">
+             <div className="px-6 py-5 border-b border-slate-50 flex items-center justify-between bg-slate-50/30">
+               <h3 className="font-black text-slate-900 text-sm uppercase tracking-widest">Recent Activity</h3>
+               <button onClick={() => {}} className="text-[10px] font-black text-indigo-600 uppercase tracking-widest hover:underline cursor-pointer">View All Activity</button>
+             </div>
+             <div className="divide-y divide-slate-50">
+               {leads.slice(0, 6).map((l) => (
+                 <div key={l.id} className="p-5 flex items-center justify-between hover:bg-slate-50 transition-colors group">
+                   <div className="flex items-center gap-4">
+                     <div className="w-10 h-10 rounded-lg bg-slate-900 flex items-center justify-center text-white font-black text-xs shadow-md group-hover:bg-indigo-600 transition-colors">
+                       {l.name[0]}
+                     </div>
+                     <div>
+                       <div className="font-bold text-sm text-slate-900">{l.name}</div>
+                       <div className="text-[11px] text-slate-400 font-medium">
+                         {l.batch} • {l.sharing} • {l.phone}
+                       </div>
+                     </div>
+                   </div>
+                   <Badge label={l.status} config={STATUS_CONFIG[l.status]} />
+                 </div>
+               ))}
+             </div>
+           </div>
         </div>
 
-        <div className="bg-white rounded-2xl p-6 shadow-xs">
-          <div className="font-extrabold text-base text-slate-900 mb-4">Quick Actions</div>
-          <div className="flex flex-col gap-2.5">
-            <button
-              onClick={onAddLead}
-              className="p-3.5 rounded-xl border-1.5 border-dashed border-indigo-200 bg-indigo-50/50 text-indigo-600 font-bold cursor-pointer text-left text-sm hover:bg-indigo-50 transition-colors"
-            >
-              ＋ Add New Lead Manually
-            </button>
-            <button
-              onClick={onBulkImport}
-              className="p-3.5 rounded-xl border-1.5 border-dashed border-emerald-200 bg-emerald-50/50 text-emerald-700 font-bold cursor-pointer text-left text-sm hover:bg-emerald-50 transition-colors"
-            >
-              📤 Import from Excel / CSV
-            </button>
-            <button
-              onClick={onViewFollowUps}
-              className="p-3.5 rounded-xl border-1.5 border-dashed border-amber-200 bg-amber-50/50 text-amber-700 font-bold cursor-pointer text-left text-sm hover:bg-amber-50 transition-colors"
-            >
-              📞 View Pending Follow-ups ({followUp + pending})
-            </button>
-            <button
-              onClick={onViewPayments}
-              className="p-3.5 rounded-xl border-1.5 border-dashed border-blue-200 bg-blue-50/50 text-blue-700 font-bold cursor-pointer text-left text-sm hover:bg-blue-50 transition-colors"
-            >
-              💰 Check Payment Status
-            </button>
+        <div className="space-y-6">
+          <div className="bg-slate-900 rounded-xl p-8 text-white shadow-2xl relative overflow-hidden">
+             <div className="relative z-10">
+               <h3 className="text-xl font-black mb-2">Grow your business 🏔️</h3>
+               <p className="text-slate-400 text-xs font-medium leading-relaxed mb-6">
+                 Track your pipeline and follow up with leads consistently to increase your conversion rate.
+               </p>
+               <button 
+                  onClick={onAddLead}
+                  className="w-full py-3.5 bg-white text-slate-900 rounded-lg font-black text-sm hover:bg-slate-100 transition-all flex items-center justify-center gap-2"
+                >
+                 <span>＋</span> New Manual Lead
+               </button>
+             </div>
+             <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-indigo-500/20 rounded-full blur-3xl"></div>
+          </div>
+
+          <div className="bg-white rounded-xl shadow-premium border border-slate-100 p-6">
+            <h3 className="font-black text-slate-900 text-[11px] uppercase tracking-widest mb-6">Quick Filters</h3>
+            <div className="flex flex-wrap gap-2">
+              <button onClick={onViewFollowUps} className="px-4 py-2 bg-slate-50 text-slate-700 rounded-lg text-xs font-bold border border-slate-100 hover:border-slate-300 transition-all">Pending Calls</button>
+              <button onClick={onViewPayments} className="px-4 py-2 bg-slate-50 text-slate-700 rounded-lg text-xs font-bold border border-slate-100 hover:border-slate-300 transition-all">Revenue Stats</button>
+              <button className="px-4 py-2 bg-slate-50 text-slate-700 rounded-lg text-xs font-bold border border-slate-100 hover:border-slate-300 transition-all">Batch Lists</button>
+            </div>
           </div>
         </div>
       </div>

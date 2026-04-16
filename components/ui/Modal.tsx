@@ -36,7 +36,7 @@ export const Modal: React.FC<ModalProps> = ({
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-2xl w-full max-h-[90vh] overflow-auto shadow-2xl animate-in zoom-in-95 duration-200"
+        className="bg-white rounded-xl w-full max-h-[90vh] overflow-auto shadow-2xl animate-in zoom-in-95 duration-200"
         style={{ maxWidth: width }}
         onClick={(e) => e.stopPropagation()}
       >
