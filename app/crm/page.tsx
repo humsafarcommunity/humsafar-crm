@@ -65,6 +65,7 @@ export default function HumsafarCRM() {
     notes: "",
     tag: "New",
     followUp: "",
+    destination: "",
   });
 
   const showToast = (msg: string, type: "success" | "error" | "info" = "success") => {
@@ -98,6 +99,7 @@ export default function HumsafarCRM() {
       notes: "",
       tag: "New",
       followUp: "",
+      destination: "",
     });
   };
 
@@ -116,6 +118,7 @@ export default function HumsafarCRM() {
       notes: lead.notes || "",
       tag: lead.tag,
       followUp: lead.followUp || "",
+      destination: lead.destination || "",
     });
     setModal("edit");
   };
@@ -149,13 +152,14 @@ export default function HumsafarCRM() {
           age: (isNaN(ageVal) ? "" : ageVal) as number | "",
           phone: cols[2] || "",
           email: cols[3] || "",
-          sharing: (cols[4] as RoomSharing) || "Double",
-          batch: cols[5] || "TBD",
-          status: (cols[6] as LeadStatus) || "Pending",
-          advance: parseFloat(cols[7]) || 0,
-          total: parseFloat(cols[8]) || 0,
-          notes: cols[9] || "",
-          tag: (cols[10] as LeadTag) || "New",
+          destination: cols[4] || "",
+          sharing: (cols[5] as RoomSharing) || "Double",
+          batch: cols[6] || "TBD",
+          status: (cols[7] as LeadStatus) || "Pending",
+          advance: parseFloat(cols[8]) || 0,
+          total: parseFloat(cols[9]) || 0,
+          notes: cols[10] || "",
+          tag: (cols[11] as LeadTag) || "New",
           followUp: "",
         };
       }).filter((r) => r.name);
@@ -379,6 +383,12 @@ export default function HumsafarCRM() {
             placeholder="e.g. Rahul Sharma"
           />
           <Input
+            label="Destination"
+            value={form.destination}
+            onChange={(e) => setForm({ ...form, destination: e.target.value })}
+            placeholder="e.g. Spiti Valley"
+          />
+          <Input
             label="Age"
             value={form.age}
             onChange={(e) => setForm({ ...form, age: e.target.value === "" ? "" : Number(e.target.value) })}
@@ -485,7 +495,7 @@ export default function HumsafarCRM() {
         <div className="bg-slate-50 rounded-2xl p-5 mb-6 border-2 border-dashed border-slate-200">
           <p className="font-bold text-sm text-slate-900 mb-2">CSV Format Expectations:</p>
           <code className="text-xs bg-indigo-50 text-indigo-600 p-3 rounded-lg block font-mono">
-            Name, Age, Phone, Email, Sharing, Batch, Status, Advance, Total, Notes, Tag
+            Name, Age, Phone, Email, Destination, Sharing, Batch, Status, Advance, Total, Notes, Tag
           </code>
           <p className="text-xs text-slate-500 mt-3 italic">
             * Note: The first row is treated as header and will be skipped.
@@ -560,6 +570,7 @@ export default function HumsafarCRM() {
                 { k: "Age", v: selected.age },
                 { k: "Phone", v: selected.phone },
                 { k: "Email", v: selected.email || "—" },
+                { k: "Destination", v: selected.destination || "—" },
                 { k: "Batch", v: selected.batch },
                 { k: "Sharing", v: selected.sharing },
                 { k: "Tag", v: selected.tag },

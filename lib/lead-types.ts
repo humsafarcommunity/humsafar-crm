@@ -8,6 +8,7 @@ export interface Lead {
   age: number | "";
   phone: string;
   email: string;
+  destination: string;
   sharing: RoomSharing;
   batch: string;
   status: LeadStatus;

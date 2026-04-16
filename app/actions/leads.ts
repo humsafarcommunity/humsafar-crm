@@ -13,6 +13,7 @@ const mapLead = (l: any): Lead => ({
   age: l.age ?? "",
   phone: l.phone,
   email: l.email,
+  destination: l.destination || "",
   sharing: l.sharing as RoomSharing,
   batch: l.batch,
   status: l.status as LeadStatus,
@@ -121,6 +122,7 @@ export async function bulkImportLeads(items: Lead[]) {
     notes: i.notes,
     tag: i.tag,
     followUp: i.followUp,
+    destination: i.destination,
   }));
 
   const { error } = await supabase.from("leads").insert(values);

@@ -51,7 +51,8 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
       !q ||
       l.name.toLowerCase().includes(q) ||
       l.phone.includes(q) ||
-      l.email?.toLowerCase().includes(q);
+      l.email?.toLowerCase().includes(q) ||
+      l.destination?.toLowerCase().includes(q);
     const matchStatus = filterStatus === "All" || l.status === filterStatus;
     const matchBatch = filterBatch === "All" || l.batch === filterBatch;
     return matchSearch && matchStatus && matchBatch;
@@ -105,6 +106,7 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
               <tr className="bg-slate-50">
                 {[
                   "Name & Contact",
+                  "Destination",
                   "Batch",
                   "Sharing",
                   "Status",
@@ -143,6 +145,9 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
                         </div>
                       </div>
                     </div>
+                  </td>
+                  <td className="px-4 py-3 text-slate-700 font-bold whitespace-nowrap">
+                    {l.destination || "—"}
                   </td>
                   <td className="px-4 py-3 text-slate-600 whitespace-nowrap">{l.batch}</td>
                   <td className="px-4 py-3 text-slate-600">{l.sharing}</td>
