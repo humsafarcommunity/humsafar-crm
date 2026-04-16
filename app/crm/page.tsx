@@ -42,6 +42,7 @@ export default function HumsafarCRM() {
   }, []);
 
   const [tab, setTab] = useState<"dashboard" | "leads" | "followups" | "batches" | "payments">("dashboard");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [filterStatus, setFilterStatus] = useState("All");
   const [filterBatch, setFilterBatch] = useState("All");
@@ -191,10 +192,38 @@ export default function HumsafarCRM() {
     );
   }
   return (
-    <div className="flex h-screen bg-slate-50 font-sans overflow-hidden">
+    <div className="flex flex-col lg:flex-row h-screen bg-slate-50 font-sans overflow-hidden">
+      {/* MOBILE HEADER */}
+      <header className="lg:hidden bg-slate-900 px-5 py-4 flex items-center justify-between sticky top-0 z-50">
+        <div className="flex items-center gap-2.5">
+          <div className="w-8 h-8 bg-linear-to-br from-indigo-500 to-indigo-600 rounded-lg flex items-center justify-center text-base">
+            🏔️
+          </div>
+          <span className="text-white font-black text-sm uppercase tracking-tight">Humsafar</span>
+        </div>
+        <button 
+          onClick={() => setIsSidebarOpen(true)}
+          className="w-10 h-10 flex items-center justify-center text-slate-400 hover:text-white transition-colors"
+        >
+          <span className="text-2xl">☰</span>
+        </button>
+      </header>
+
+      {/* MOBILE OVERLAY */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 lg:hidden animate-in fade-in duration-300" 
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
       {/* SIDEBAR */}
-      <aside className="w-64 bg-slate-900 flex flex-col shrink-0 h-screen">
-        <div className="p-6">
+      <aside className={`
+        fixed inset-y-0 left-0 bg-slate-900 flex flex-col shrink-0 h-full z-50 w-72 transition-transform duration-300 transform
+        lg:relative lg:translate-x-0 lg:z-0 lg:w-64
+        ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
+      `}>
+        <div className="p-6 flex items-center justify-between border-b border-slate-800 lg:border-0 lg:block">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-linear-to-br from-indigo-500 to-indigo-600 rounded-xl flex items-center justify-center text-xl">
               🏔️
@@ -206,13 +235,22 @@ export default function HumsafarCRM() {
               </div>
             </div>
           </div>
+          <button 
+            onClick={() => setIsSidebarOpen(false)}
+            className="lg:hidden w-8 h-8 flex items-center justify-center text-slate-500 hover:text-white"
+          >
+            ✕
+          </button>
         </div>
 
-        <nav className="px-3 flex-1">
+        <nav className="px-3 mt-4 flex-1">
           {navItems.map((item) => (
             <button
               key={item.id}
-              onClick={() => setTab(item.id)}
+              onClick={() => {
+                setTab(item.id);
+                setIsSidebarOpen(false);
+              }}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm mb-1 transition-all ${
                 tab === item.id
                   ? "bg-linear-to-br from-indigo-500 to-indigo-600 text-white shadow-lg"

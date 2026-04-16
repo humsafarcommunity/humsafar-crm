@@ -54,23 +54,23 @@ export const Dashboard: React.FC<DashboardProps> = ({
   const balance = totalRevenue - collected;
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex justify-between items-center">
+    <div className="flex flex-col gap-6 animate-in fade-in duration-500">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
         <div>
-          <h2 className="text-2xl font-black text-slate-900">Good day, Humsafar 🏔️</h2>
-          <p className="text-slate-500 text-sm mt-1">Here's your travel business at a glance</p>
+          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">Good day, Humsafar 🏔️</h2>
+          <p className="text-slate-500 text-sm mt-1 font-medium italic">Here's your travel business at a glance</p>
         </div>
-        <div className="flex gap-2.5">
-          <Button onClick={onAddLead} variant="primary">
+        <div className="flex flex-wrap gap-2.5">
+          <Button onClick={onAddLead} variant="primary" className="flex-1 md:flex-none">
             ＋ Add Lead
           </Button>
-          <Button onClick={onBulkImport} variant="ghost">
-            📤 Bulk Import
+          <Button onClick={onBulkImport} variant="ghost" className="flex-1 md:flex-none">
+            📤 Import
           </Button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-3 md:gap-4">
         <StatCard
           label="Total Leads"
           value={total}

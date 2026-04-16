@@ -56,46 +56,48 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
   });
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex flex-col md:flex-row gap-4 md:items-center justify-between">
-        <div className="flex flex-1 flex-wrap gap-2.5">
+    <div className="flex flex-col gap-4 animate-in fade-in slide-in-from-bottom-2 duration-500">
+      <div className="flex flex-col lg:flex-row gap-4 lg:items-center justify-between">
+        <div className="flex flex-1 flex-wrap gap-2 md:gap-3">
           <Input
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="🔍 Search name, phone, email..."
-            className="min-w-[220px] md:max-w-xs"
+            placeholder="🔍 Search name, phone..."
+            className="flex-1 min-w-[140px] lg:max-w-xs h-10"
           />
-          <Select
-            value={filterStatus}
-            onChange={(e) => setFilterStatus(e.target.value)}
-            className="w-auto"
-          >
-            {statuses.map((s) => (
-              <option key={s}>{s}</option>
-            ))}
-          </Select>
-          <Select
-            value={filterBatch}
-            onChange={(e) => setFilterBatch(e.target.value)}
-            className="w-auto"
-          >
-            {batches.map((b) => (
-              <option key={b}>{b}</option>
-            ))}
-          </Select>
+          <div className="flex gap-2 w-full sm:w-auto">
+            <Select
+              value={filterStatus}
+              onChange={(e) => setFilterStatus(e.target.value)}
+              className="flex-1 sm:w-auto h-10"
+            >
+              {statuses.map((s) => (
+                <option key={s}>{s}</option>
+              ))}
+            </Select>
+            <Select
+              value={filterBatch}
+              onChange={(e) => setFilterBatch(e.target.value)}
+              className="flex-1 sm:w-auto h-10"
+            >
+              {batches.map((b) => (
+                <option key={b}>{b}</option>
+              ))}
+            </Select>
+          </div>
         </div>
         <div className="flex gap-2">
-          <Button onClick={onAddLead} size="sm">
+          <Button onClick={onAddLead} size="sm" className="flex-1 sm:flex-none">
             ＋ Add Lead
           </Button>
-          <Button onClick={onBulkImport} variant="ghost" size="sm">
+          <Button onClick={onBulkImport} variant="ghost" size="sm" className="flex-1 sm:flex-none">
             📤 Import
           </Button>
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-xs overflow-hidden">
-        <div className="overflow-x-auto">
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+        <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-slate-200">
           <table className="w-full border-collapse text-[13px]">
             <thead>
               <tr className="bg-slate-50">
