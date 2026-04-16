@@ -16,6 +16,7 @@ export interface Lead {
   followUp: string;
   notes: string;
   tag: LeadTag;
+  createdAt?: string | Date | null;
 }
 
 export interface StatusStyle {
