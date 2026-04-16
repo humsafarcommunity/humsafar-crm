@@ -2,7 +2,7 @@
 
 import { createClient } from "@/utils/supabase/server";
 import { cookies } from "next/headers";
-import { Lead, LeadStatus, LeadTag, RoomSharing } from "@/lib/types";
+import { Lead, LeadStatus, LeadTag, RoomSharing } from "@/lib/lead-types";
 import { revalidatePath } from "next/cache";
 import { SEED_LEADS } from "@/lib/constants";
 

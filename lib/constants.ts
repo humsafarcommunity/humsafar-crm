@@ -1,4 +1,4 @@
-import { Lead, LeadStatus, StatusStyle, TagStyle, LeadTag } from "./types";
+import { Lead, LeadStatus, StatusStyle, TagStyle, LeadTag } from "./lead-types";
 
 export const SEED_LEADS: Lead[] = [
   { id: 1, name: "Pragya Chandrakar", age: 24, phone: "6263333632", email: "pragya@email.com", sharing: "Double", batch: "07 Dec 2024", status: "Confirmed", advance: 3000, total: 6500, followUp: "2024-12-01", notes: "Excited for Manali trip", tag: "Repeat" },

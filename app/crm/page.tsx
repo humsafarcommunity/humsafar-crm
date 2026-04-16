@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { Lead, LeadStatus, LeadTag, RoomSharing } from "@/lib/types";
+import { Lead, LeadStatus, LeadTag, RoomSharing } from "@/lib/lead-types";
 import { SEED_LEADS, STATUS_CONFIG, TAG_CONFIG, ITINERARY_TEMPLATE } from "@/lib/constants";
 
 // UI Components

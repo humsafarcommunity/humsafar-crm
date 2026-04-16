@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Lead, LeadStatus } from "@/lib/types";
+import { Lead, LeadStatus } from "@/lib/lead-types";
 import { STATUS_CONFIG, TAG_CONFIG } from "@/lib/constants";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
