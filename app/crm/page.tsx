@@ -483,7 +483,7 @@ export default function HumsafarCRM() {
         title="📤 Bulk Import Leads"
         width={680}
       >
-        <div className="bg-slate-50 rounded-2xl p-5 mb-6 border-2 border-dashed border-slate-200">
+        <div className="bg-slate-50 rounded-xl p-5 mb-6 border border-slate-200">
           <p className="font-bold text-sm text-slate-900 mb-2">CSV Format Expectations:</p>
           <code className="text-xs bg-indigo-50 text-indigo-600 p-3 rounded-lg block font-mono">
             Name, Age, Phone, Email, Destination, Sharing, Batch, Status, Advance, Total, Notes, Tag
@@ -494,7 +494,7 @@ export default function HumsafarCRM() {
         </div>
 
         <div
-          className="border-2 border-dashed border-indigo-300 rounded-2xl p-10 text-center bg-indigo-50/30 cursor-pointer hover:bg-indigo-50 transition-colors mb-6"
+          className="border-2 border-dashed border-slate-300 rounded-xl p-10 text-center bg-slate-50/50 cursor-pointer hover:bg-slate-100 transition-colors mb-6"
           onClick={() => fileRef.current?.click()}
         >
           <div className="text-5xl mb-3">📄</div>
@@ -519,7 +519,7 @@ export default function HumsafarCRM() {
               </span>
               {bulkPreview.length} records ready to import
             </div>
-            <div className="max-h-52 overflow-auto bg-slate-50 rounded-xl border border-slate-100 divide-y divide-slate-100">
+            <div className="max-h-52 overflow-auto bg-slate-50 rounded-lg border border-slate-200 divide-y divide-slate-100">
               {bulkPreview.slice(0, 5).map((l, i) => (
                 <div key={i} className="px-4 py-2.5 flex justify-between items-center text-xs">
                   <span className="font-bold text-slate-900">{l.name}</span>
@@ -570,7 +570,7 @@ export default function HumsafarCRM() {
                 { k: "Balance Due", v: `₹${(selected.total - selected.advance).toLocaleString()}` },
                 { k: "Follow-up", v: selected.followUp || "—" },
               ].map((item) => (
-                <div key={item.k} className="bg-slate-50 p-3 rounded-xl">
+                <div key={item.k} className="bg-slate-50 p-3 rounded-lg border border-slate-100/50">
                   <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">
                     {item.k}
                   </div>

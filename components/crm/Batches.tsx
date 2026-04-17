@@ -32,7 +32,7 @@ export const Batches: React.FC<BatchesProps> = ({ leads, onWhatsApp, onCall }) =
             return (
               <div
                 key={batch}
-                className="bg-white rounded-2xl overflow-hidden shadow-xs border border-slate-100"
+                className="bg-white rounded-xl overflow-hidden shadow-premium border border-slate-200/60"
               >
                 <div className="px-6 py-5 bg-linear-to-br from-slate-800 to-slate-900 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
                   <div>
@@ -63,7 +63,7 @@ export const Batches: React.FC<BatchesProps> = ({ leads, onWhatsApp, onCall }) =
                       className="flex items-center justify-between px-6 py-4 hover:bg-slate-50/50 transition-colors"
                     >
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-linear-to-br from-indigo-500 to-indigo-600 flex items-center justify-center text-white text-[12px] font-black">
+                        <div className="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center text-white text-[11px] font-black shadow-sm group-hover:bg-indigo-600 transition-colors">
                           {l.name[0]}
                         </div>
                         <div>
@@ -81,13 +81,13 @@ export const Batches: React.FC<BatchesProps> = ({ leads, onWhatsApp, onCall }) =
                         <div className="flex gap-1.5 ml-2">
                           <button
                             onClick={() => onWhatsApp(l)}
-                            className="px-2.5 py-1.5 rounded-lg bg-emerald-50 text-emerald-600 text-[11px] font-black hover:bg-emerald-100 transition-colors"
+                            className="px-2.5 py-1.5 rounded-md bg-emerald-50 text-emerald-600 text-[10px] font-black hover:bg-emerald-100 border border-emerald-100 transition-all active:scale-95"
                           >
                             💬 WA
                           </button>
                           <button
                             onClick={() => onCall(l)}
-                            className="px-2.5 py-1.5 rounded-lg bg-blue-50 text-blue-600 text-[11px] font-black hover:bg-blue-100 transition-colors"
+                            className="px-2.5 py-1.5 rounded-md bg-blue-50 text-blue-600 text-[10px] font-black hover:bg-blue-100 border border-blue-100 transition-all active:scale-95"
                           >
                             📞 Call
                           </button>

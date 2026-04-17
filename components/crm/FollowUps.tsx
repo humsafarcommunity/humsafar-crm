@@ -34,12 +34,12 @@ export const FollowUps: React.FC<FollowUpsProps> = ({
         {due.map((l) => (
           <div
             key={l.id}
-            className="bg-white rounded-2xl p-5 shadow-xs border-l-4"
+            className="bg-white rounded-xl p-5 shadow-premium border-l-4"
             style={{ borderLeftColor: STATUS_CONFIG[l.status]?.color }}
           >
             <div className="flex justify-between items-start mb-4">
               <div className="flex gap-3 items-center">
-                <div className="w-10 h-10 rounded-full bg-linear-to-br from-indigo-500 to-indigo-600 flex items-center justify-center text-white font-black text-base">
+                <div className="w-10 h-10 rounded-lg bg-slate-900 flex items-center justify-center text-white font-black text-sm shadow-md">
                   {l.name[0]}
                 </div>
                 <div>
@@ -50,7 +50,7 @@ export const FollowUps: React.FC<FollowUpsProps> = ({
               <Badge label={l.status} config={STATUS_CONFIG[l.status]} />
             </div>
 
-            <div className="grid grid-cols-2 gap-2 mb-4 p-3.5 bg-slate-50 rounded-xl">
+            <div className="grid grid-cols-2 gap-2 mb-4 p-3.5 bg-slate-50/80 rounded-lg border border-slate-100/50">
               <div className="text-[11px]">
                 <span className="text-slate-400 font-bold uppercase tracking-widest block mb-0.5">Phone</span>
                 <b className="text-slate-900 text-[13px]">{l.phone}</b>
@@ -100,7 +100,7 @@ export const FollowUps: React.FC<FollowUpsProps> = ({
           </div>
         ))}
         {due.length === 0 && (
-          <div className="col-span-full py-20 bg-white rounded-2xl flex flex-col items-center justify-center text-center">
+          <div className="col-span-full py-20 bg-white rounded-xl border border-slate-100 flex flex-col items-center justify-center text-center shadow-premium">
             <div className="text-5xl mb-4">🎉</div>
             <div className="text-lg font-black text-slate-900 italic">All caught up!</div>
             <div className="text-sm text-slate-400 mt-1">No pending follow-ups right now.</div>

@@ -16,10 +16,10 @@ interface StatCardProps {
 
 const StatCard: React.FC<StatCardProps> = ({ label, value, sub, color, icon }) => (
   <div
-    className="bg-white rounded-2xl p-6 shadow-premium border border-slate-50 transition-all hover:translate-y-[-2px] hover:shadow-lg flex flex-col justify-between"
+    className="bg-white rounded-xl p-6 shadow-premium border border-slate-200/60 transition-all hover:translate-y-[-2px] hover:shadow-xl flex flex-col justify-between"
   >
     <div className="flex justify-between items-start mb-4">
-      <div className="w-10 h-10 rounded-xl flex items-center justify-center text-xl bg-slate-50 shrink-0" style={{ color }}>
+      <div className="w-10 h-10 rounded-lg flex items-center justify-center text-xl bg-slate-50 shrink-0 border border-slate-100" style={{ color }}>
          {icon}
       </div>
       <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest text-right">
@@ -29,7 +29,7 @@ const StatCard: React.FC<StatCardProps> = ({ label, value, sub, color, icon }) =
     <div>
       <div className="text-3xl font-black text-slate-900 tracking-tight">{value}</div>
       {sub && <div className="text-[11px] font-bold text-slate-500 mt-2 flex items-center gap-1.5 uppercase tracking-wide">
-        <span className="w-1.5 h-1.5 rounded-full" style={{ background: color }}></span>
+        <span className="w-1.5 h-1.5 rounded-sm" style={{ background: color }}></span>
         {sub}
       </div>}
     </div>
@@ -123,11 +123,11 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
         <div className="xl:col-span-2 space-y-6">
-           <div className="bg-white rounded-xl shadow-premium border border-slate-100 overflow-hidden">
-             <div className="px-6 py-5 border-b border-slate-50 flex items-center justify-between bg-slate-50/30">
-               <h3 className="font-black text-slate-900 text-sm uppercase tracking-widest">Recent Activity</h3>
-               <button onClick={() => {}} className="text-[10px] font-black text-indigo-600 uppercase tracking-widest hover:underline cursor-pointer">View All Activity</button>
-             </div>
+            <div className="bg-white rounded-xl shadow-premium border border-slate-200/60 overflow-hidden">
+              <div className="px-6 py-5 border-b border-slate-100 flex items-center justify-between bg-slate-50/50">
+                <h3 className="font-black text-slate-900 text-[11px] uppercase tracking-widest">Recent Activity</h3>
+                <button onClick={() => {}} className="text-[10px] font-black text-slate-400 uppercase tracking-widest hover:text-indigo-600 transition-colors cursor-pointer">View Records</button>
+              </div>
              <div className="divide-y divide-slate-50">
                {leads.slice(0, 6).map((l) => (
                  <div key={l.id} className="p-5 flex items-center justify-between hover:bg-slate-50 transition-colors group">

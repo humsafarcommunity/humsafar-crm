@@ -99,7 +99,7 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+      <div className="bg-white rounded-xl shadow-premium border border-slate-200/60 overflow-hidden">
         <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-slate-200">
           <table className="w-full border-collapse text-[13px]">
             <thead>
@@ -135,7 +135,7 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
                 >
                   <td className="px-4 py-3">
                     <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-full bg-linear-to-br from-indigo-500 to-indigo-600 flex items-center justify-center text-white font-black text-[13px] shrink-0">
+                      <div className="w-8 h-8 rounded-lg bg-slate-900 flex items-center justify-center text-white font-black text-[11px] shrink-0 shadow-sm">
                         {l.name[0]}
                       </div>
                       <div>
@@ -155,7 +155,7 @@ export const LeadsTable: React.FC<LeadsTableProps> = ({
                     <select
                       value={l.status}
                       onChange={(e) => onUpdateStatus(l.id, e.target.value as LeadStatus)}
-                      className="px-2 py-1 rounded-lg font-bold text-[12px] cursor-pointer outline-hidden border-1.5 transition-colors"
+                      className="px-2 py-1 rounded-md font-bold text-[11px] cursor-pointer outline-hidden border-1.5 transition-colors"
                       style={{
                         borderColor: STATUS_CONFIG[l.status]?.color,
                         color: STATUS_CONFIG[l.status]?.color,

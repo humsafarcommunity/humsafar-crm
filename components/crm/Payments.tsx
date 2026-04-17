@@ -29,7 +29,7 @@ export const Payments: React.FC<PaymentsProps> = ({ leads, onEmail, onWhatsApp }
         ].map((c) => (
           <div
             key={c.label}
-            className="bg-white rounded-2xl p-6 shadow-xs text-center flex flex-col items-center border border-slate-100"
+            className="bg-white rounded-xl p-6 shadow-premium text-center flex flex-col items-center border border-slate-200/60 transition-transform hover:-translate-y-1"
           >
             <div className="text-4xl mb-3">{c.icon}</div>
             <div className="text-[11px] font-extrabold text-slate-400 uppercase tracking-widest">{c.label}</div>
@@ -40,7 +40,7 @@ export const Payments: React.FC<PaymentsProps> = ({ leads, onEmail, onWhatsApp }
         ))}
       </div>
 
-      <div className="bg-white rounded-2xl shadow-xs overflow-hidden border border-slate-100">
+      <div className="bg-white rounded-xl shadow-premium overflow-hidden border border-slate-200/60">
         <div className="overflow-x-auto">
           <table className="w-full border-collapse text-[13px]">
             <thead>
